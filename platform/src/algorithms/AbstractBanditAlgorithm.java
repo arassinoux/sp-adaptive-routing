@@ -2,6 +2,7 @@ package algorithms;
 
 import arms.Arm;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public abstract class AbstractBanditAlgorithm implements BanditAlgorithm {
 
@@ -19,5 +20,17 @@ public abstract class AbstractBanditAlgorithm implements BanditAlgorithm {
     @Override
     public ArrayList<Arm> getArmsList() {
         return armsList;
+    }
+
+
+    public void update(Arm arm, double reward) {
+        int armId = arm.getId();
+
+        counts[armId]++;
+        int n = counts[armId];
+
+        double oldValue = empiricalMeans[armId];
+        double newValue = ((double)(n - 1) / (double)n) * oldValue + ((1 / (double)n) * reward);
+        empiricalMeans[armId] = newValue;
     }
 }

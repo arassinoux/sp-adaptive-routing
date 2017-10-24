@@ -46,19 +46,6 @@ public class EpsilonGreedyAlgorithm extends AbstractBanditAlgorithm {
     }
 
     @Override
-    public void update(Arm arm, double reward) {
-        int armIndex = armsList.indexOf(arm);
-
-        counts[armIndex]++;
-        int n = counts[armIndex];
-
-        double value = empiricalMeans[armIndex];
-        double new_value = (((double)n - 1) / (double)n * value) + ((1 / (double)n) * reward);
-        empiricalMeans[armIndex] = new_value;
-
-    }
-
-    @Override
     public void reset() {
 
     }

@@ -4,7 +4,7 @@ import algorithms.BanditAlgorithm;
 
 public class AgentFactory {
 
-    public Agent createSimpleAgent(BanditAlgorithm banditAlgorithm) {
-        return new SimpleAgent(banditAlgorithm);
+    public Agent createSimpleAgent(BanditAlgorithm banditAlgorithm, int maxSteps) {
+        return new SimpleAgent(banditAlgorithm, maxSteps);
     }
 }

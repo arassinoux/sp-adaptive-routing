@@ -2,6 +2,7 @@ import agents.Agent;
 import agents.AgentFactory;
 import algorithms.BanditAlgorithm;
 import algorithms.EpsilonGreedyAlgorithm;
+import algorithms.SoftmaxAlgorithm;
 import arms.Arm;
 import arms.ArmFactory;
 
@@ -14,7 +15,7 @@ public class Main {
 
         ArmFactory armFactory = new ArmFactory();
 
-        Arm arm1 = armFactory.createBernouilliArm(0, 0.9);
+        Arm arm1 = armFactory.createBernouilliArm(0, 0.5);
         Arm arm2 = armFactory.createBernouilliArm(1, 0.1);
         ArrayList<Arm> armsList = new ArrayList<>();
         armsList.add(arm1.getId(), arm1);
@@ -22,13 +23,11 @@ public class Main {
 
 
         AgentFactory agentFactory = new AgentFactory();
-        Agent agent = agentFactory.createSimpleAgent(new EpsilonGreedyAlgorithm(armsList, 0.2));
+        Agent agent = agentFactory.createSimpleAgent(new EpsilonGreedyAlgorithm(armsList,0.2), 50);
+        //Agent agent = agentFactory.createSimpleAgent(new SoftmaxAlgorithm(armsList, 0.1));
 
-        for(int steps=0; steps < 50; steps++)
-            agent.process();
-
-        System.out.println("Cumulative Reward: " + agent.getCumulativeReward());
-        System.out.println(Arrays.toString(agent.getArmHistory().toArray()));
+        agent.process();
+        agent.finish();
     }
 
 }
