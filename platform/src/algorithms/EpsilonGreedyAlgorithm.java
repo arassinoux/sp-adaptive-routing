@@ -20,19 +20,19 @@ public class EpsilonGreedyAlgorithm extends AbstractBanditAlgorithm {
     @Override
     public Arm selectArm() {
         if (random.nextDouble() > epsilon) {
-            return getArmWithHigherValue();
+            return getArmWithHighestValue();
         }
 
         return armsList.get(random.nextInt(armsList.size()));
     }
 
-    private Arm getArmWithHigherValue() {
+    private Arm getArmWithHighestValue() {
         ArrayList<Arm> bestArms = new ArrayList<>(armsList.size());
 
         double maxValue = -1;
 
         for (Arm arm: armsList) {
-            double value = empiricalMeans[armsList.indexOf(arm)];
+            double value = getEmpiricalMeans()[armsList.indexOf(arm)];
             if (value > maxValue) {
                 bestArms.clear();
                 bestArms.add(arm);

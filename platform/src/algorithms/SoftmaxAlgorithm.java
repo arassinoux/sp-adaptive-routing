@@ -14,8 +14,8 @@ public class SoftmaxAlgorithm extends AbstractBanditAlgorithm {
     public SoftmaxAlgorithm(ArrayList<Arm> armsList, double tau)
     {
         super(armsList);
-        Arrays.fill(empiricalMeans, 1);
-        Arrays.fill(counts, 1);
+        Arrays.fill(wins, 1);
+        Arrays.fill(pulls, 1);
         this.tau = tau;
     }
 
@@ -35,7 +35,7 @@ public class SoftmaxAlgorithm extends AbstractBanditAlgorithm {
 
     @Override
     public Arm selectArm() {
-        ArrayList<Double> computedWeights = BoltzmannDistribution(empiricalMeans);
+        ArrayList<Double> computedWeights = BoltzmannDistribution(getEmpiricalMeans());
 
         this.weightedArms = new RandomCollection();
         for(Arm arm : armsList)

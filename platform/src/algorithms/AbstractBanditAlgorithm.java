@@ -7,14 +7,14 @@ import java.util.Arrays;
 public abstract class AbstractBanditAlgorithm implements BanditAlgorithm {
 
     protected ArrayList<Arm> armsList;
-    protected double[] empiricalMeans;
-    protected int[] counts;
+    protected double[] wins;
+    protected double[] pulls;
 
     public AbstractBanditAlgorithm(ArrayList<Arm> armsList)
     {
         this.armsList = armsList;
-        this.empiricalMeans = new double[armsList.size()];
-        this.counts = new int[armsList.size()];
+        this.pulls = new double[armsList.size()];
+        this.wins = new double[armsList.size()];
     }
 
     @Override
@@ -26,11 +26,23 @@ public abstract class AbstractBanditAlgorithm implements BanditAlgorithm {
     public void update(Arm arm, double reward) {
         int armId = arm.getId();
 
-        counts[armId]++;
-        int n = counts[armId];
+        pulls[armId]++;
+        wins[armId] += reward;
+    }
 
-        double oldValue = empiricalMeans[armId];
-        double newValue = ((double)(n - 1) / (double)n) * oldValue + ((1 / (double)n) * reward);
-        empiricalMeans[armId] = newValue;
+    public double[] getEmpiricalMeans()
+    {
+        double[] empiricalMeans = new double[armsList.size()];
+
+        for(Arm arm : armsList)
+        {
+            if(pulls[arm.getId()] == 0.0) {
+                empiricalMeans[arm.getId()] = 0.0;
+            } else {
+                empiricalMeans[arm.getId()] = wins[arm.getId()] / pulls[arm.getId()];
+            }
+        }
+
+       return empiricalMeans;
     }
 }
