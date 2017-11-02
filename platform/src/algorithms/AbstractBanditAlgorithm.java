@@ -30,16 +30,16 @@ public abstract class AbstractBanditAlgorithm implements BanditAlgorithm {
         wins[armId] += reward;
     }
 
-    public double[] getEmpiricalMeans()
+    public ArrayList<Double> getEmpiricalMeans()
     {
-        double[] empiricalMeans = new double[armsList.size()];
+        ArrayList<Double> empiricalMeans = new ArrayList<>(armsList.size());
 
         for(Arm arm : armsList)
         {
             if(pulls[arm.getId()] == 0.0) {
-                empiricalMeans[arm.getId()] = 0.0;
+                empiricalMeans.add(arm.getId(), 0.0);
             } else {
-                empiricalMeans[arm.getId()] = wins[arm.getId()] / pulls[arm.getId()];
+                empiricalMeans.add(arm.getId(), wins[arm.getId()] / pulls[arm.getId()]);
             }
         }
 

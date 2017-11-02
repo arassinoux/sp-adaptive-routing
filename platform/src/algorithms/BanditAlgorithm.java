@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public interface BanditAlgorithm {
 
     ArrayList<Arm> getArmsList();
-    double[] getEmpiricalMeans();
+    ArrayList<Double> getEmpiricalMeans();
     Arm selectArm();
     void update(Arm arm, double reward);
     void reset();

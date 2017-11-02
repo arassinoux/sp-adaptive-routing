@@ -14,7 +14,6 @@ public class BernouilliArm extends AbstractArm {
         this.random = new Random();
     }
 
-
     @Override
     public double getReward() {
         if(random.nextDouble() > p)

@@ -32,7 +32,7 @@ public class EpsilonGreedyAlgorithm extends AbstractBanditAlgorithm {
         double maxValue = -1;
 
         for (Arm arm: armsList) {
-            double value = getEmpiricalMeans()[armsList.indexOf(arm)];
+            double value = getEmpiricalMeans().get(arm.getId());
             if (value > maxValue) {
                 bestArms.clear();
                 bestArms.add(arm);

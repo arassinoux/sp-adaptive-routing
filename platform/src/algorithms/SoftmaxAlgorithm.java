@@ -19,11 +19,12 @@ public class SoftmaxAlgorithm extends AbstractBanditAlgorithm {
         this.tau = tau;
     }
 
-    private ArrayList<Double> BoltzmannDistribution(double[] weights)
+    private ArrayList<Double> BoltzmannDistribution(ArrayList<Double> weights)
     {
-        ArrayList<Double> dist = new ArrayList<>(weights.length);
+        ArrayList<Double> dist = new ArrayList<>(weights.size());
 
-        double totalWeight = Arrays.stream(weights).sum();
+        double totalWeight = weights.stream().mapToDouble(Double::doubleValue).sum();
+
         for(double weight : weights)
         {
             double result = Math.exp(weight / tau) / totalWeight;
@@ -35,6 +36,7 @@ public class SoftmaxAlgorithm extends AbstractBanditAlgorithm {
 
     @Override
     public Arm selectArm() {
+
         ArrayList<Double> computedWeights = BoltzmannDistribution(getEmpiricalMeans());
 
         this.weightedArms = new RandomCollection();

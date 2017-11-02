@@ -20,7 +20,6 @@ public abstract class AbstractAgent implements Agent {
         this.cumulativeReward = 0;
         this.armHistory = new ArrayList<>();
         this.init();
-
     }
 
     public void init()
@@ -47,6 +46,6 @@ public abstract class AbstractAgent implements Agent {
     {
         System.out.println("Agent is finishing...");
         System.out.println("Cumulative Reward: " + this.cumulativeReward);
-        System.out.println(Arrays.toString(armHistory.toArray()));
+        System.out.println("History " + Arrays.toString(armHistory.toArray()));
     }
 }
