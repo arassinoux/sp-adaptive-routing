@@ -15,11 +15,8 @@ public class Main {
         ArrayList armsList = armFactory.generateArmsList(4, "Bernouilli", paramsBernouilli);
 
         AgentFactory agentFactory = new AgentFactory();
-        //Agent agent = agentFactory.createSimpleAgent(new EpsilonGreedyAlgorithm(armsList,0.5), 50);
-        //Agent agent = agentFactory.createSimpleAgent(new SoftmaxAlgorithm(armsList, 0.1), 50);
-        //Agent agent = agentFactory.createSimpleAgent(new PursuitAlgorithm(armsList, 0.05), 50);
-        Agent agent = agentFactory.createSimpleAgent(new UCB1Algorithm(armsList), 500);
 
+        Agent agent = agentFactory.createSimpleAgent(EnumBanditAlgorithm.PURSUIT, 0.05, armsList, 500);
 
         agent.process();
         agent.finish();
