@@ -3,8 +3,11 @@ package algorithms;
 import algorithms.helpers.RandomCollection;
 import arms.Arm;
 
-import java.util.*;
-import java.util.function.Consumer;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Random;
+
 
 public class PursuitAlgorithm extends AbstractBanditAlgorithm {
 
