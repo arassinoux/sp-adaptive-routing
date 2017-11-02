@@ -9,12 +9,14 @@ public abstract class AbstractBanditAlgorithm implements BanditAlgorithm {
     protected ArrayList<Arm> armsList;
     protected double[] wins;
     protected double[] pulls;
+    protected int rounds;
 
     public AbstractBanditAlgorithm(ArrayList<Arm> armsList)
     {
         this.armsList = armsList;
         this.pulls = new double[armsList.size()];
         this.wins = new double[armsList.size()];
+        this.rounds = 0;
     }
 
     @Override
@@ -28,6 +30,7 @@ public abstract class AbstractBanditAlgorithm implements BanditAlgorithm {
 
         pulls[armId]++;
         wins[armId] += reward;
+        rounds++;
     }
 
     public ArrayList<Double> getEmpiricalMeans()
