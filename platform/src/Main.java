@@ -2,6 +2,7 @@ import agents.Agent;
 import agents.AgentFactory;
 import algorithms.*;
 import arms.ArmFactory;
+import arms.EnumArm;
 
 import java.util.ArrayList;
 
@@ -12,7 +13,7 @@ public class Main {
         ArmFactory armFactory = new ArmFactory();
 
         double[] paramsBernouilli = new double[]{0.1, 0.5, 0.1, 0.2};
-        ArrayList armsList = armFactory.generateArmsList(4, "Bernouilli", paramsBernouilli);
+        ArrayList armsList = armFactory.generateArmsList(4, EnumArm.BERNOUILLI, paramsBernouilli);
 
         AgentFactory agentFactory = new AgentFactory();
 

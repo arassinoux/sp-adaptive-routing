@@ -8,13 +8,13 @@ public class ArmFactory {
         return new BernouilliArm(id, p);
     }
 
-    public ArrayList<Arm> generateArmsList(int number, String type, Object hyperParams)
+    public ArrayList<Arm> generateArmsList(int number, EnumArm armType, Object hyperParams)
     {
         ArrayList<Arm> armsList = new ArrayList<>();
 
-        switch(type)
+        switch(armType)
         {
-            case "Bernouilli":
+            case BERNOUILLI:
             {
                 double[] p = (double[])hyperParams;
 
