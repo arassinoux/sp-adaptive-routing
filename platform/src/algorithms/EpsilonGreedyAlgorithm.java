@@ -15,6 +15,7 @@ public class EpsilonGreedyAlgorithm extends AbstractBanditAlgorithm {
         super(armsList);
         this.epsilon = epsilon;
         this.random = new Random();
+        this.name = "egreedy";
     }
 
     @Override

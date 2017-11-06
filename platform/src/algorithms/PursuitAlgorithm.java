@@ -11,7 +11,6 @@ import java.util.Random;
 
 public class PursuitAlgorithm extends AbstractBanditAlgorithm {
 
-    private RandomCollection<Arm> weightedArms;
     private ArrayList<Double> probabilities;
     private double beta;
     private Random random;
@@ -25,6 +24,7 @@ public class PursuitAlgorithm extends AbstractBanditAlgorithm {
 
         this.beta = beta;
         this.random = new Random();
+        this.name = "pursuit";
     }
 
     @Override
@@ -32,23 +32,28 @@ public class PursuitAlgorithm extends AbstractBanditAlgorithm {
         ArrayList<Double> empiricalMeans = getEmpiricalMeans();
         double maxEmpiricalMean = Collections.max(empiricalMeans);
 
-        this.weightedArms = new RandomCollection();
-        for(Arm arm : armsList)
-        {
-            double currentProbability = probabilities.get(arm.getId());
-            weightedArms.add(currentProbability, arm);
+
+        double p = Math.random();
+        Arm chosenArm = null;
+        double cumulativeProbability = 0.0;
+        for (Arm arm : armsList) {
+            cumulativeProbability += probabilities.get(arm.getId());
+            if (p <= cumulativeProbability && probabilities.get(arm.getId()) != 0) {
+
+                if(chosenArm == null)
+                    chosenArm = arm;
+            }
 
             if(empiricalMeans.get(arm.getId()) == maxEmpiricalMean)
             {
-                probabilities.set(arm.getId(), currentProbability + beta * (1 - currentProbability));
+                probabilities.set(arm.getId(), probabilities.get(arm.getId()) + beta * (1 - probabilities.get(arm.getId())));
             }
             else
             {
-                probabilities.set(arm.getId(), currentProbability + beta * (0 - currentProbability));
+                probabilities.set(arm.getId(), probabilities.get(arm.getId()) + beta * (0 - probabilities.get(arm.getId())));
             }
         }
-
-        return weightedArms.next();
+        return chosenArm;
     }
 
 

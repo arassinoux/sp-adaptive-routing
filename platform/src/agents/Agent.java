@@ -1,5 +1,8 @@
 package agents;
 
+import algorithms.BanditAlgorithm;
+import helpers.CSVWriter;
+
 import java.util.ArrayList;
 
 public interface Agent {
@@ -10,4 +13,6 @@ public interface Agent {
     double getCumulativeReward();
     void setArmInHistory(int armId);
     ArrayList<Integer> getArmHistory();
+    BanditAlgorithm getBanditAlgorithm();
+    void outputRegret(CSVWriter writer);
 }

@@ -9,7 +9,7 @@ public class BernouilliArm extends AbstractArm {
 
     public BernouilliArm(int id, double p)
     {
-        super(id);
+        super(id, EnumArm.BERNOUILLI);
         this.p = p;
         this.random = new Random();
     }

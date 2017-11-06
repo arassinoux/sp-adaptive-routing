@@ -13,6 +13,10 @@ public class AgentFactory {
 
         switch(banditAlgorithm)
         {
+            case RANDOM: {
+                agent = new SimpleAgent(new RandomAlgorithm(armsList), maxSteps);
+                break;
+            }
             case EGREEDY: {
                 double epsilon = (double) hyperParam;
                 agent = new SimpleAgent(new EpsilonGreedyAlgorithm(armsList, epsilon), maxSteps);

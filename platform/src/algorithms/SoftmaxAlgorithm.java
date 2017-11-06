@@ -17,6 +17,7 @@ public class SoftmaxAlgorithm extends AbstractBanditAlgorithm {
         Arrays.fill(wins, 1);
         Arrays.fill(pulls, 1);
         this.tau = tau;
+        this.name = "softmax";
     }
 
     private ArrayList<Double> BoltzmannDistribution(ArrayList<Double> weights)

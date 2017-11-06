@@ -11,6 +11,8 @@ public abstract class AbstractAgent implements Agent {
     protected double cumulativeReward;
     protected int maxSteps;
     protected ArrayList<Integer> armHistory;
+    protected double[] regret;
+    protected double[] cumulativeRegret;
 
 
     public AbstractAgent(BanditAlgorithm banditAlgorithm, int maxSteps)
@@ -19,6 +21,8 @@ public abstract class AbstractAgent implements Agent {
         this.maxSteps = maxSteps;
         this.cumulativeReward = 0;
         this.armHistory = new ArrayList<>();
+        this.regret = new double[maxSteps];
+        this.cumulativeRegret = new double[maxSteps];
         this.init();
     }
 
@@ -42,10 +46,15 @@ public abstract class AbstractAgent implements Agent {
         return armHistory;
     }
 
+    public BanditAlgorithm getBanditAlgorithm() {
+        return banditAlgorithm;
+    }
+
+    public double[] getRegret() {
+        return regret;
+    }
+
     public void finish()
     {
-        System.out.println("Agent is finishing...");
-        System.out.println("Cumulative Reward: " + this.cumulativeReward);
-        System.out.println("History " + Arrays.toString(armHistory.toArray()));
     }
 }

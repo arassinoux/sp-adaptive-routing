@@ -1,6 +1,5 @@
 package algorithms;
 
-import algorithms.helpers.RandomCollection;
 import arms.Arm;
 
 import java.util.ArrayList;
@@ -16,6 +15,7 @@ public class UCB1Algorithm extends AbstractBanditAlgorithm {
     public UCB1Algorithm(ArrayList<Arm> armsList) {
         super(armsList);
         this.random = new Random();
+        this.name = "ucb1";
 
     }
 
@@ -43,7 +43,6 @@ public class UCB1Algorithm extends AbstractBanditAlgorithm {
             }
         }
 
-        System.out.println(computeUCB1());
         return bestArms.get(random.nextInt(bestArms.size()));
     }
 

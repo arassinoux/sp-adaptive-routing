@@ -10,6 +10,7 @@ public abstract class AbstractBanditAlgorithm implements BanditAlgorithm {
     protected double[] wins;
     protected double[] pulls;
     protected int rounds;
+    protected String name;
 
     public AbstractBanditAlgorithm(ArrayList<Arm> armsList)
     {
@@ -24,12 +25,16 @@ public abstract class AbstractBanditAlgorithm implements BanditAlgorithm {
         return armsList;
     }
 
+    public String getName()
+    { return name; }
+
 
     public void update(Arm arm, double reward) {
         int armId = arm.getId();
 
         pulls[armId]++;
         wins[armId] += reward;
+        //System.out.println(reward);
         rounds++;
     }
 
@@ -46,6 +51,7 @@ public abstract class AbstractBanditAlgorithm implements BanditAlgorithm {
             }
         }
 
+        //System.out.println(empiricalMeans);
        return empiricalMeans;
     }
 }

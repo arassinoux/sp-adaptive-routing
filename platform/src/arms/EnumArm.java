@@ -1,5 +1,8 @@
 package arms;
 
 public enum EnumArm {
-    BERNOUILLI
+    BERNOUILLI,
+    UNIFORM,
+    GAUSSIAN,
+    TRIANGULAR
 }
