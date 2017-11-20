@@ -4,5 +4,6 @@ public enum EnumArm {
     BERNOUILLI,
     UNIFORM,
     GAUSSIAN,
-    TRIANGULAR
+    TRIANGULAR,
+    BIAS_BERNOUILLI
 }

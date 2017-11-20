@@ -16,39 +16,45 @@ public class SimpleScenario {
     private EnumArm armType;
     private int armCount;
     private Object params;
-    private EnumBanditAlgorithm banditType;
     private double[] hyperParam;
 
     private ArmFactory armFactory = new ArmFactory();
     private AgentFactory agentFactory = new AgentFactory();
     private ArrayList armsList;
 
+    private final int initialSeed = 100;
+    private int currentSeed = initialSeed;
+
     public SimpleScenario(int agentCount) {
         this.agentCount = agentCount;
 
-        armType = EnumArm.GAUSSIAN;
+        armType = EnumArm.BIAS_BERNOUILLI;
         // params = new double[][]{{0.3, 0.7, 0.6}, {0.7, 0.9, 0.8}};  //Triangular
-        params = new double[][]{{0.3, 0.2}, {0.7, 0.2}};
-        armCount = 2;
+        //params = new double[][]{{0.3, 0.2}, {0.7, 0.2}};
+        //params = new double[]{0.3, 0.2, 0.1, 0.5, 0.4, 0.8, 0.8, 0.3, 0.2, 0.1, 0, 0, 0, 0, 0, 0.7, 0.9, 0.2, 0.1, 0.1};
+        armCount = 20;
 
-        armsList = armFactory.generateArmsList(armCount, armType, params);
-
-        hyperParam = new double[]{0.0, 0.1, 0.1, 0.1, 0.0}; // random, epsilon, softmax, pursuit, ucb1
+        hyperParam = new double[]{0.0, 0.1, 0.1, 0.1, 0.0, 0.1}; // random, epsilon, softmax, pursuit, ucb1, exp3
     }
 
     public void play()
     {
         for(EnumBanditAlgorithm bandit : EnumBanditAlgorithm.values()) {
 
-            CSVWriter writer = new CSVWriter("regret_" + bandit.name());
+            CSVWriter writer = new CSVWriter("data/regret_" + bandit.name());
+
+            currentSeed = initialSeed;
 
             for (int i = 0; i < agentCount; i++) {
+
+                armsList = armFactory.generateArmsList(armCount, armType, params, currentSeed);
 
                 Agent agent = agentFactory.createSimpleAgent(bandit, hyperParam[bandit.ordinal()], armsList, 2000);
 
                 agent.process();
                 agent.outputRegret(writer);
                 agent.finish();
+                currentSeed++;
             }
 
             writer.dispose();

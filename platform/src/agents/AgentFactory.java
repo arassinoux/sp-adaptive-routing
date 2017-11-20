@@ -36,6 +36,11 @@ public class AgentFactory {
                 agent = new SimpleAgent(new UCB1Algorithm(armsList), maxSteps);
                 break;
             }
+            case EXP3: {
+                double gamma = (double) hyperParam;
+                agent = new SimpleAgent(new EXP3Algorithm(armsList, gamma), maxSteps);
+                break;
+            }
             default:
             {
                 return null;

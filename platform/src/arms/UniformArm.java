@@ -1,16 +1,11 @@
 package arms;
 
-import java.util.Random;
-
 public class UniformArm extends AbstractArm {
 
-    private Random random;
 
-
-    public UniformArm(int id)
+    public UniformArm(int id, int seed)
     {
-        super(id, EnumArm.UNIFORM);
-        this.random = new Random();
+        super(id, EnumArm.UNIFORM, seed);
     }
 
     @Override

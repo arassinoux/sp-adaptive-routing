@@ -3,8 +3,6 @@ package algorithms;
 import arms.Arm;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.Random;
 
 
@@ -15,7 +13,7 @@ public class UCB1Algorithm extends AbstractBanditAlgorithm {
     public UCB1Algorithm(ArrayList<Arm> armsList) {
         super(armsList);
         this.random = new Random();
-        this.name = "ucb1";
+        this.name = "UCB1";
 
     }
 

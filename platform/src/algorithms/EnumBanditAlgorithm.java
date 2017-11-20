@@ -5,6 +5,7 @@ public enum EnumBanditAlgorithm {
     EGREEDY,
     SOFTMAX,
     PURSUIT,
-    UCB1
+    UCB1,
+    EXP3
 
 }

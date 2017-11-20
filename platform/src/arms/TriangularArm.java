@@ -4,15 +4,13 @@ import java.util.Random;
 
 public class TriangularArm extends AbstractArm {
 
-    private Random random;
     private double a;
     private double b;
     private double c;
 
-    public TriangularArm(int id, double a, double b, double c)
+    public TriangularArm(int id, double a, double b, double c, int seed)
     {
-        super(id, EnumArm.TRIANGULAR);
-        this.random = new Random();
+        super(id, EnumArm.TRIANGULAR, seed);
         this.a = a;
         this.b = b;
         this.c = c;

@@ -5,13 +5,11 @@ import java.util.Random;
 public class BernouilliArm extends AbstractArm {
 
     private final double p;
-    private Random random;
 
-    public BernouilliArm(int id, double p)
+    public BernouilliArm(int id, double p, int seed)
     {
-        super(id, EnumArm.BERNOUILLI);
+        super(id, EnumArm.BERNOUILLI, seed);
         this.p = p;
-        this.random = new Random();
     }
 
     @Override

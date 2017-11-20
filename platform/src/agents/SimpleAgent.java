@@ -4,7 +4,6 @@ import algorithms.BanditAlgorithm;
 import arms.Arm;
 import helpers.CSVWriter;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Collections;
 
@@ -46,9 +45,9 @@ public class SimpleAgent extends AbstractAgent {
 
         System.out.println("Agent is finishing...");
         System.out.println("Cumulative Reward: " + this.cumulativeReward);
-        System.out.println("Regret per turn: " + Arrays.toString(regret));
+        //System.out.println("Regret per turn: " + Arrays.toString(regret));
 
-        System.out.println("Cumulative regret: " + Arrays.toString(cumulativeRegret));
+        //System.out.println("Cumulative regret: " + Arrays.toString(cumulativeRegret));
         System.out.println("History " + Arrays.toString(armHistory.toArray()));
     }
 }
