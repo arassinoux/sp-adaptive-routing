@@ -5,7 +5,9 @@
 out
 platform.iml
 .gradle
-/build/
+/platform/build/
+/platform/gradle/wrapper/gradle-wrapper.properties
+/platform/data/
 
 # Ignore Gradle GUI config
 gradle-app.setting
