@@ -11,7 +11,7 @@ This project has been developed for the Artificial Intelligence Laboratory (LIA)
 
 ## Architecture
   
-<img src="./assets/architecture.png" alt="Architecture" style="width: 500px;"/>
+<img src="http://arassinoux.com/assets/architecture.png" alt="Architecture" style="width: 500px;"/>
 
 ## Project structure
 <pre>
