@@ -18,13 +18,13 @@ This project has been developed for the Artificial Intelligence Laboratory (LIA)
 .
 ├── README.md
 ├── platform    
-│   └── agents                         Code of the various agent nodes including bandit algorithms
+│   └── agents              Code of the various agent nodes including bandit algorithms
 │   └── arms								Code of the various arms nodes
 │   └── data								Output folder of the evaluation platform
-│   └── messages					Structures of messages shared between arms, agents, and simulation nodes
+│   └── messages					  Structures of messages shared between arms, agents, and simulation nodes
 │   └── simulation					Code of the simulation node
-├── Plots.ipynb                         Python notebook to plot some results
-├── report.pdf                         Report of the full project with explained results
+├── Plots.ipynb             Python notebook to plot some results
+├── report.pdf              Report of the full project with explained results
 </pre>
 
 
